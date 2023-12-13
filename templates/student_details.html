@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>age</th>
+                <th>college</th>
+                <th>address</th>
+            </tr>
+        </thead>
+        {% for a in p%}
+         <tbody>
+            <tr>
+                <th>{{a.name}}</th>
+                <th>{{a.age}}</th>
+                <th>{{a.college}}</th>
+                <th>{{a.address}}</th>
+                
+            </tr>
+         </tbody>
+         {% endfor%}
+        </table>
+    </div>
+</body>
+</html>
