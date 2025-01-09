@@ -24,3 +24,36 @@ class Studentidcard(models.Model):
     college=models.CharField(null=False,blank=False,max_length=150)
     study=models.BooleanField(default=False)
     
+class Author(models.Model):
+    gender_choices=(("male","male"),("female","female"))
+    name=models.CharField(max_length=100)
+    gender=models.CharField(max_length=50, choices=gender_choices,default="male")
+
+    def __str__(self):
+        return self.name
+
+
+class Publisher(models.Model):
+    name=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class Genre(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+    
+class Book(models.Model):
+    title=models.CharField(max_length=100)
+    author=models.ForeignKey(Author,on_delete=models.RESTRICT)
+    publisher=models.ForeignKey(Publisher,on_delete=models.RESTRICT)
+    price=models.IntegerField(null=True)
+    genres = models.ManyToManyField(Genre)  # Many-to-Many relationship
+    img=models.ImageField(blank=True,null=True,upload_to="book_img/" ,)
+    file=models.FileField(upload_to="file/",default='default_file.txt')
+
+
+    def __str__(self):
+        return self.title
